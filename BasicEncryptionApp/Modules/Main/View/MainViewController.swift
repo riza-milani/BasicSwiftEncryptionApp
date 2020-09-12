@@ -11,8 +11,8 @@ import UIKit
 class MainViewController: UIViewController {
 
     let mainViewModel = MainViewModel()
-    var aesCBCMode = true
-    var aesKetSize256 = true
+    @IBOutlet weak var aesCBCModeSwitch: UISwitch!
+    @IBOutlet weak var aesKeySize256Switch: UISwitch!
     @IBOutlet weak var urlTextView: UITextField!
     
     required init?(coder: NSCoder) {
@@ -25,15 +25,9 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func enterPasswordAction(_ sender: Any) {
-        mainViewModel.showDetailView(url: urlTextView.text, aesCBCMode: aesCBCMode , aesSize256: aesKetSize256)
-    }
-
-    @IBAction func aesModeAction(_ sender: UISwitch) {
-        aesCBCMode = sender.isOn
-    }
-
-    @IBAction func aesKeyAction(_ sender: UISwitch) {
-        aesKetSize256 = sender.isOn
+        mainViewModel.showDetailView(url: urlTextView.text,
+                                     aesCBCMode: aesCBCModeSwitch.isOn ,
+                                     aesSize256: aesKeySize256Switch.isOn)
     }
 }
 
