@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias ResponseData = String
-
 protocol ServiceCall {
     func fetchData<T: Decodable>(decryptionPassword: String, completion: @escaping ((Result<T, Error>) -> Void))
 }

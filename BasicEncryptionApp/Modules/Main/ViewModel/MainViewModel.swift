@@ -13,6 +13,8 @@ class MainViewModel {
 
     var viewController: UIViewController?
 
+    // Actually this method should be in coordinator. (I'm facing time limitation, sorry about that)
+    // In VIPER this can be a presenter and using UIKit(view elements) in presenter is completely wrong!
     func showDetailView(url: String?, aesCBCMode: Bool, aesSize256: Bool) {
         let detailViewController = DetailViewController(urlLink: url, aesCBCMode: aesCBCMode, aesKeySize256: aesSize256)
         viewController?.navigationController?.pushViewController(detailViewController, animated: true)
