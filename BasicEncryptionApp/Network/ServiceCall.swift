@@ -9,16 +9,24 @@
 import Foundation
 
 typealias ResponseData = String
-let baseUrl = "http://service-address-com/sample.json"
 
 protocol ServiceCall {
-    func fetchData<T: Decodable>(completion: @escaping ((Result<T, Error>) -> Void))
+    func fetchData<T: Decodable>(decryptionPassword: String, completion: @escaping ((Result<T, Error>) -> Void))
 }
 
 class ServiceCallApi: ServiceCall {
-    func fetchData<T: Decodable>(completion: @escaping ((Result<T, Error>) -> Void)) {
+
+    let basicEncryption: BasicEncryption
+    let urlLink: String
+
+    init(urlLink: String, aesMode: BasicEncryption.EncryptionMode, aesSize: BasicEncryption.EncryptionKeySize) {
+        self.urlLink = urlLink
+        basicEncryption = BasicEncryption(mode: aesMode, size: aesSize)
+    }
+
+    func fetchData<T: Decodable>(decryptionPassword: String, completion: @escaping ((Result<T, Error>) -> Void)) {
         DispatchQueue.global(qos: .background).async {
-            let endpoint: String = baseUrl
+            let endpoint: String = self.urlLink
             guard let url = URL(string: endpoint) else {
                 completion(.failure(NSError(domain: "Can not create url address.", code: 0, userInfo: nil)))
                 return
@@ -36,11 +44,16 @@ class ServiceCallApi: ServiceCall {
                     completion(.failure(NSError(domain: "There is no data response.", code: 0, userInfo: nil)))
                     return
                 }
-                guard let responseData = try? JSONDecoder().decode(T.self, from: dataResponse) else {
+                guard let responseData = try? JSONDecoder().decode([String: Data].self, from: dataResponse) else {
                     completion(.failure(NSError(domain: "Can not decode the data.", code: 0, userInfo: nil)))
                     return
                 }
-                completion(.success(responseData))
+                let decryptedData = self.basicEncryption.decryp(fromDictionary: responseData, withPassword: decryptionPassword)
+                guard let decryptedResponse = try? JSONDecoder().decode(T.self, from: decryptedData) else {
+                    completion(.failure(NSError(domain: "Can not decode the data.", code: 0, userInfo: nil)))
+                    return
+                }
+                completion(.success(decryptedResponse))
             }
             task.resume()
         }
@@ -49,7 +62,11 @@ class ServiceCallApi: ServiceCall {
 
 class ServiceCallLocal: ServiceCall {
 
-    let basicEncryption = BasicEncryption()
+    let basicEncryption: BasicEncryption
+
+    init(aesMode: BasicEncryption.EncryptionMode, aesSize: BasicEncryption.EncryptionKeySize) {
+        basicEncryption = BasicEncryption(mode: aesMode, size: aesSize)
+    }
 
     func mockEncryptionData() -> Data? {
         if let data = "{ \"result\": \"This is simple test\"}".data(using: .utf8) {
@@ -59,15 +76,20 @@ class ServiceCallLocal: ServiceCall {
         return nil
     }
 
-    func fetchData<T: Decodable>(completion: @escaping ((Result<T, Error>) -> Void)) {
+    func fetchData<T: Decodable>(decryptionPassword: String, completion: @escaping ((Result<T, Error>) -> Void)) {
         DispatchQueue.global(qos: .userInitiated).async {
 
             if let data = self.mockEncryptionData() {
-                guard let responseData = try? JSONDecoder().decode(T.self, from: data) else {
+                guard let responseData = try? JSONDecoder().decode([String: Data].self, from: data) else {
                     completion(.failure(NSError(domain: "Can not decode the data.", code: 0, userInfo: nil)))
                     return
                 }
-                completion(.success(responseData))
+                let decryptedData = self.basicEncryption.decryp(fromDictionary: responseData, withPassword: decryptionPassword)
+                guard let decryptedResponse = try? JSONDecoder().decode(T.self, from: decryptedData) else {
+                    completion(.failure(NSError(domain: "Can not decode the data.", code: 0, userInfo: nil)))
+                    return
+                }
+                completion(.success(decryptedResponse))
             }
         }
     }
