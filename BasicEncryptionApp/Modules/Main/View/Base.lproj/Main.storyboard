@@ -60,6 +60,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHg-vW-XUn">
                                         <rect key="frame" x="150.5" y="56.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="aesModeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="pYf-pG-6Zd"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,6 +105,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNF-Nw-Ej5">
                                         <rect key="frame" x="150.5" y="56.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="aesKeyAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fg8-Qg-1TB"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,6 +160,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="okJ-WQ-nnI"/>
+                    <connections>
+                        <outlet property="urlTextView" destination="RAd-4X-YiZ" id="4eH-g8-my1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

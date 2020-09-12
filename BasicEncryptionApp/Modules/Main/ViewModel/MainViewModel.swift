@@ -13,8 +13,8 @@ class MainViewModel {
 
     var viewController: UIViewController?
 
-    func showDetailView() {
-        let detailViewController = DetailViewController()
+    func showDetailView(url: String?, aesCBCMode: Bool, aesSize256: Bool) {
+        let detailViewController = DetailViewController(urlLink: url, aesCBCMode: aesCBCMode, aesKeySize256: aesSize256)
         viewController?.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

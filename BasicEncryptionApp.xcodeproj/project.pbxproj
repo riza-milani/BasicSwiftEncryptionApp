@@ -16,9 +16,10 @@
 		748B294F250CAD4E00D21B86 /* BasicEncryptionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B294E250CAD4E00D21B86 /* BasicEncryptionAppTests.swift */; };
 		748B295F250CB60C00D21B86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B295D250CB60C00D21B86 /* DetailViewController.swift */; };
 		748B2960250CB60C00D21B86 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 748B295E250CB60C00D21B86 /* DetailViewController.xib */; };
-		748B296C250CC1E400D21B86 /* BasicEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B296B250CC1E400D21B86 /* BasicEncryption.swift */; };
 		748B2966250CBC9800D21B86 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B2965250CBC9800D21B86 /* MainViewModel.swift */; };
 		748B2969250CC08E00D21B86 /* ServiceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B2968250CC08E00D21B86 /* ServiceCall.swift */; };
+		748B296C250CC1E400D21B86 /* BasicEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B296B250CC1E400D21B86 /* BasicEncryption.swift */; };
+		748B296E250D523A00D21B86 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B296D250D523A00D21B86 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +46,10 @@
 		748B2950250CAD4E00D21B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		748B295D250CB60C00D21B86 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		748B295E250CB60C00D21B86 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		748B296B250CC1E400D21B86 /* BasicEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEncryption.swift; sourceTree = "<group>"; };
 		748B2965250CBC9800D21B86 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		748B2968250CC08E00D21B86 /* ServiceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCall.swift; sourceTree = "<group>"; };
+		748B296B250CC1E400D21B86 /* BasicEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEncryption.swift; sourceTree = "<group>"; };
+		748B296D250D523A00D21B86 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,16 +176,9 @@
 		748B2964250CBC8400D21B86 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				748B296D250D523A00D21B86 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		748B296A250CC1C600D21B86 /* Encryption */ = {
-			isa = PBXGroup;
-			children = (
-				748B296B250CC1E400D21B86 /* BasicEncryption.swift */,
-			);
-			path = Encryption;
 			sourceTree = "<group>";
 		};
 		748B2967250CC06A00D21B86 /* Network */ = {
@@ -192,6 +187,14 @@
 				748B2968250CC08E00D21B86 /* ServiceCall.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		748B296A250CC1C600D21B86 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				748B296B250CC1E400D21B86 /* BasicEncryption.swift */,
+			);
+			path = Encryption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +306,7 @@
 				748B2969250CC08E00D21B86 /* ServiceCall.swift in Sources */,
 				748B293A250CAD4C00D21B86 /* SceneDelegate.swift in Sources */,
 				748B295F250CB60C00D21B86 /* DetailViewController.swift in Sources */,
+				748B296E250D523A00D21B86 /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
