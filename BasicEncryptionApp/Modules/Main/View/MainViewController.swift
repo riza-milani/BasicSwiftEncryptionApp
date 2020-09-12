@@ -10,10 +10,19 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    let mainViewModel = MainViewModel()
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        mainViewModel.viewController = self
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-    
+
+    @IBAction func enterPasswordAction(_ sender: Any) {
+        mainViewModel.showDetailView()
+    }
 }
 

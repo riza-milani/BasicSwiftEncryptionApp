@@ -17,6 +17,7 @@
 		748B295F250CB60C00D21B86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B295D250CB60C00D21B86 /* DetailViewController.swift */; };
 		748B2960250CB60C00D21B86 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 748B295E250CB60C00D21B86 /* DetailViewController.xib */; };
 		748B296C250CC1E400D21B86 /* BasicEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B296B250CC1E400D21B86 /* BasicEncryption.swift */; };
+		748B2966250CBC9800D21B86 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B2965250CBC9800D21B86 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		748B295D250CB60C00D21B86 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		748B295E250CB60C00D21B86 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		748B296B250CC1E400D21B86 /* BasicEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEncryption.swift; sourceTree = "<group>"; };
+		748B2965250CBC9800D21B86 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +127,8 @@
 		748B295B250CAE7400D21B86 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				748B293B250CAD4C00D21B86 /* MainViewController.swift */,
-				748B293D250CAD4C00D21B86 /* Main.storyboard */,
+				748B2963250CBC7C00D21B86 /* ViewModel */,
+				748B2962250CBC5900D21B86 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -134,10 +136,43 @@
 		748B295C250CB5EF00D21B86 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				748B2964250CBC8400D21B86 /* ViewModel */,
+				748B2961250CBC4F00D21B86 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		748B2961250CBC4F00D21B86 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				748B295D250CB60C00D21B86 /* DetailViewController.swift */,
 				748B295E250CB60C00D21B86 /* DetailViewController.xib */,
 			);
-			path = Detail;
+			path = View;
+			sourceTree = "<group>";
+		};
+		748B2962250CBC5900D21B86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				748B293B250CAD4C00D21B86 /* MainViewController.swift */,
+				748B293D250CAD4C00D21B86 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		748B2963250CBC7C00D21B86 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				748B2965250CBC9800D21B86 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		748B2964250CBC8400D21B86 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		748B296A250CC1C600D21B86 /* Encryption */ = {
@@ -251,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				748B296C250CC1E400D21B86 /* BasicEncryption.swift in Sources */,
+				748B2966250CBC9800D21B86 /* MainViewModel.swift in Sources */,
 				748B293C250CAD4C00D21B86 /* MainViewController.swift in Sources */,
 				748B2938250CAD4C00D21B86 /* AppDelegate.swift in Sources */,
 				748B293A250CAD4C00D21B86 /* SceneDelegate.swift in Sources */,
