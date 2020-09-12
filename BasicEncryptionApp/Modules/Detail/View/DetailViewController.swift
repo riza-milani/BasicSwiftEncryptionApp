@@ -8,23 +8,38 @@
 
 import UIKit
 
+struct Respond: Decodable {
+    let result: String
+}
 class DetailViewController: UIViewController {
+
+    var detailViewModel: DetailViewModel?
+
+    @IBOutlet weak var decryptedContent: UILabel!
+    @IBOutlet weak var password: UITextField!
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    convenience init(urlLink: String?, aesCBCMode: Bool, aesKeySize256: Bool) {
+        self.init(nibName:nil, bundle:nil)
+        detailViewModel = DetailViewModel(urlLink: urlLink, aesCBCMode: aesCBCMode, aesSize256: aesKeySize256)
+        
+    }
+
+    // This extends the superclass.
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func decryptAction(_ sender: Any) {
+        detailViewModel?.decrypt(password: password.text) { [weak self] result in
+            self?.decryptedContent.text = result
+        }
     }
-    */
-
 }

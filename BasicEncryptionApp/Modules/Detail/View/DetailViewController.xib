@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="BasicEncryptionApp" customModuleProvider="target">
             <connections>
+                <outlet property="decryptedContent" destination="XTk-KT-RhX" id="Ogy-6k-ym5"/>
+                <outlet property="password" destination="UZK-wX-Xbw" id="6q9-ZK-oqb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,6 +37,9 @@
                     <state key="normal" title="Decrypt Content">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="decryptAction:" destination="-1" eventType="touchUpInside" id="3pb-fx-IR1"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decrypted content will shown here!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTk-KT-RhX">
                     <rect key="frame" x="32" y="126" width="350" height="20.5"/>
