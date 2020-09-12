@@ -19,9 +19,54 @@ class BasicEncryptionAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testEncrypionCBC256Successful() throws {
+        let basicEncryption = BasicEncryption(mode: .cbc, size: .aes_256)
+        let clearText = "sample text!"
+        let clearTextData = clearText.data(using:String.Encoding.utf8)!
+        let dictionary = basicEncryption.encrypt(clearTextData, withPassword: "123456")
+        let decrypted = basicEncryption.decryp(fromDictionary: dictionary, withPassword: "123456")
+        let decryptedString = String(data: decrypted, encoding: String.Encoding.utf8)
+        XCTAssertEqual(clearText, decryptedString)
+    }
+
+    func testEncrypionCBC128Successful() throws {
+        let basicEncryption = BasicEncryption(mode: .cbc, size: .aes_128)
+        let clearText = "sample text!"
+        let clearTextData = clearText.data(using:String.Encoding.utf8)!
+        let dictionary = basicEncryption.encrypt(clearTextData, withPassword: "123456")
+        let decrypted = basicEncryption.decryp(fromDictionary: dictionary, withPassword: "123456")
+        let decryptedString = String(data: decrypted, encoding: String.Encoding.utf8)
+        XCTAssertEqual(clearText, decryptedString)
+    }
+
+    func testEncrypionECB256Successful() throws {
+        let basicEncryption = BasicEncryption(mode: .ecb, size: .aes_256)
+        let clearText = "sample text!"
+        let clearTextData = clearText.data(using:String.Encoding.utf8)!
+        let dictionary = basicEncryption.encrypt(clearTextData, withPassword: "123456")
+        let decrypted = basicEncryption.decryp(fromDictionary: dictionary, withPassword: "123456")
+        let decryptedString = String(data: decrypted, encoding: String.Encoding.utf8)
+        XCTAssertEqual(clearText, decryptedString)
+    }
+
+    func testEncrypionECB128Successful() throws {
+        let basicEncryption = BasicEncryption(mode: .ecb, size: .aes_128)
+        let clearText = "sample text!"
+        let clearTextData = clearText.data(using:String.Encoding.utf8)!
+        let dictionary = basicEncryption.encrypt(clearTextData, withPassword: "123456")
+        let decrypted = basicEncryption.decryp(fromDictionary: dictionary, withPassword: "123456")
+        let decryptedString = String(data: decrypted, encoding: String.Encoding.utf8)
+        XCTAssertEqual(clearText, decryptedString)
+    }
+
+    func testEncrypionFailurWrongPassword() throws {
+        let basicEncryption = BasicEncryption(mode: .cbc, size: .aes_256)
+        let clearText = "sample text!"
+        let clearTextData = clearText.data(using:String.Encoding.utf8)!
+        let dictionary = basicEncryption.encrypt(clearTextData, withPassword: "1234561")
+        let decrypted = basicEncryption.decryp(fromDictionary: dictionary, withPassword: "123456")
+        let decryptedString = String(data: decrypted, encoding: String.Encoding.utf8)
+        XCTAssertFalse(clearText == decryptedString)
     }
 
     func testPerformanceExample() throws {
