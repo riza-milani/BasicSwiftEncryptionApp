@@ -8,9 +8,6 @@
 
 import UIKit
 
-struct Respond: Decodable {
-    let result: String
-}
 class DetailViewController: UIViewController {
 
     var detailViewModel: DetailViewModel?
